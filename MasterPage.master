@@ -1,0 +1,1024 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%--Ajax control toolkit reference for calendar Extendar--%>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- CSS Libs -->
+    <link rel="stylesheet" type="text/css" href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <%--Clock Picker plugins--%>
+    <link rel="stylesheet" type="text/css" href="assets/clockpicker/css/bootstrap-clockpicker.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/clockpicker/css/github.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/bower_components/fontawesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bower_components/iCheck/skins/flat/_all.css" />
+    <link href="assets/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="assets/bower_components/DataTables/media/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/vendor/css/dataTables.bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bower_components/select2/dist/css/select2.min.css" />
+    <!-- CSS App -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/themes.css" />
+    <!--Sweeet Alert-->
+    <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css" />
+    <script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
+    <!-- Javascript Libs -->
+    <script type="text/javascript" src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <%--ClockPicker Plugin--%>
+    <script type="text/javascript" src="assets/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+    <%--Percentage Indicator--%>
+    <%--<script src="assets/percentageindicator/js/jquery.classyloader.min.js"></script>--%>
+    <script type="text/javascript" src="assets/bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="assets/bower_components/matchHeight/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="assets/bower_components/select2/dist/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/js/ace/ace.js"></script>
+    <script type="text/javascript" src="assets/vendor/js/ace/mode-html.js"></script>
+    <script type="text/javascript" src="assets/vendor/js/ace/theme-github.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/js/dataTables.bootstrap.js"></script>
+    <%--BootBox--%>
+    <script src="assets/js/application.js" type="text/javascript"></script>
+    <script src="assets/js/bootbox.min.js" type="text/javascript"></script>
+    <%--AmCharts--%>
+    <script src="assets/amcharts/amcharts.js"></script>
+    <script src="assets/amcharts/serial.js"></script>
+    <script src="assets/amcharts/gauge.js"></script>
+    <script src="assets/amcharts/light.js"></script>
+    <style type="text/css">
+        /*--Loader Start--*/
+        .no-js #loader {
+            display: none;
+        }
+
+        .js #loader {
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(assets/images/loader-64x/Preloader_2.gif) center no-repeat #fff;
+        }
+        /*--Loader End--*/
+        div.stars {
+            width: 270px !important;
+            display: inline-block !important;
+        }
+
+        input.star {
+            display: none !important;
+        }
+
+        label.star {
+            float: right !important;
+            margin-right: 10px !important;
+            padding: 10px !important;
+            font-size: 24px !important;
+            color: #444 !important;
+            transition: all .2s !important;
+        }
+
+        body {
+            color: #425979 !important;
+        }
+
+        body {
+            opacity: 1 !important;
+            transition: 0.3s opacity !important;
+        }
+
+            body.fade-out {
+                opacity: 0 !important;
+                transition: none !important;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                position: fixed;
+                display: block;
+                opacity: 0.7;
+                background-color: #fff;
+                z-index: 99;
+                text-align: center;
+                position: absolute;
+                top: 100px;
+                left: 240px;
+                z-index: 100;
+            }
+
+        .flat-green .card .card-header .title {
+            color: #425979 !important;
+        }
+
+        input.star:checked ~ label.star:before {
+            content: '\f005' !important;
+            color: #FD4 !important;
+            transition: all .25s !important;
+        }
+
+        input.star-5:checked ~ label.star:before {
+            color: #FE7 !important;
+            text-shadow: 0 0 20px #952 !important;
+        }
+
+        input.star-1:checked ~ label.star:before {
+            color: #F62 !important;
+        }
+
+        input.star-2:checked ~ label.star:before {
+            color: #F62 !important;
+        }
+
+        label.star:hover {
+            transform: rotate(-15deg) scale(1.3) !important;
+        }
+
+        label.star:before {
+            content: '\f006' !important;
+            font-family: FontAwesome !important;
+        }
+
+        .left-inner-addon {
+            position: relative;
+        }
+
+            .left-inner-addon input {
+                padding-left: 30px;
+            }
+
+            .left-inner-addon select {
+                padding-left: 30px;
+            }
+
+            .left-inner-addon i {
+                position: absolute;
+                padding: 10px 12px;
+                pointer-events: none;
+            }
+
+        @media screen and (min-device-width: 800px) and (max-device-width: 1024px) {
+            .dataTables_wrapper {
+                font-size: 11px !important;
+            }
+
+                .dataTables_wrapper .btn {
+                    font-size: 11px;
+                }
+        }
+
+        @media screen and (min-device-width: 1025px) and (max-device-width: 1160px) {
+            .dataTables_wrapper {
+                font-size: 95% !important;
+            }
+        }
+
+        input[type=radio] {
+            display: none;
+        }
+
+            input[type=radio] + label {
+                display: inline-block;
+                margin: -2px;
+                padding: 4px 12px;
+                margin-bottom: 0;
+                font-size: 14px;
+                line-height: 20px;
+                color: #333;
+                text-align: center;
+                text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+                vertical-align: middle;
+                cursor: pointer;
+                background-color: #f5f5f5;
+                background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+                background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+                background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+                background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+                background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+                background-repeat: repeat-x;
+                border: 1px solid #ccc;
+                border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+                border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+                border-bottom-color: #b3b3b3;
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+                filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+                -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+                -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+                box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+            }
+
+            input[type=radio]:checked + label {
+                background-image: none;
+                color: white;
+                outline: 0;
+                -webkit-box-shadow: inset 0 2px 4px #22A7F0,0 1px 2px #22A7F0;
+                -moz-box-shadow: inset 0 2px 4px #22A7F0,0 1px 2px #22A7F0;
+                box-shadow: inset 0 2px 4px #22A7F0,0 1px 2px #22A7F0;
+                background-color: #22A7F0;
+            }
+
+        .modalBackground {
+            background-color: Black;
+            filter: alpha(opacity=60);
+            opacity: 0.6;
+        }
+
+        .modalPopup {
+            background-color: #FFFFFF;
+            width: 300px;
+            border: 3px solid #0DA9D0;
+            border-radius: 12px;
+            padding: 0;
+        }
+
+            .modalPopup .header {
+                background-color: #2FBDF1;
+                height: 30px;
+                color: White;
+                line-height: 30px;
+                text-align: center;
+                font-weight: bold;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+            }
+
+            .modalPopup .body {
+                min-height: 50px;
+                line-height: 30px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .modalPopup .footer {
+                padding: 6px;
+            }
+
+            .modalPopup .yes, .modalPopup .no {
+                height: 23px;
+                color: White;
+                line-height: 23px;
+                text-align: center;
+                font-weight: bold;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+
+            .modalPopup .yes {
+                background-color: #2FBDF1;
+                border: 1px solid #0DA9D0;
+            }
+
+            .modalPopup .no {
+                background-color: #9F9F9F;
+                border: 1px solid #5C5C5C;
+            }
+
+        .alert {
+            font-size: 1.3em;
+            padding: 1em;
+            text-align: center;
+            white-space: nowrap;
+            width: auto;
+            word-wrap: normal;
+        }
+
+        .flat-green .pagination .active > a, .flat-green .pagination .active > a:focus, .flat-green .pagination .active > a:hover, .flat-green .pagination .active span, .flat-green .pagination .active > span:focus, .flat-green .pagination .active > span:hover {
+            background-color: #5bc0de;
+            border-color: rgba(0,0,0,.075);
+            color: #fff;
+        }
+
+        .flat-green .pagination > li > a {
+            color: #5bc0de;
+        }
+
+        #footer {
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            background-color: #f5f5f5;
+        }
+
+        #push, #footer {
+            position: fixed;
+            bottom: 0px;
+            height: 60px;
+            width: 100%;
+        }
+
+        .popover {
+            z-index: 10 !important;
+        }
+
+        .filterable {
+            opacity: 0.5 !important;
+        }
+
+        .dataTables_wrapper .top {
+            position: absolute !important;
+        }
+
+        table.dataTable thead .sorting {
+            background-image: none !important;
+        }
+
+        .dataTables_wrapper .row {
+            margin-bottom: 2.8% !important;
+            margin-left: 0.1%;
+        }
+
+        .navbar-fixed-bottom, .navbar-fixed-top {
+            z-index: 1 !important;
+        }
+
+        #ctl00_Project.ActiveMenu {
+            border-left: 3px solid #22A7F0 !important;
+            border-right: 0px solid #22A7F0 !important;
+            background-color: aqua !important;
+        }
+
+        .label-title {
+            display: inline-block;
+            max-width: 130%;
+            margin-left: 5%;
+            font-size: small;
+            margin-bottom: 5px;
+            font-family: 'Roboto Condensed', sans-serif;
+            width: 20%;
+        }
+
+        #ActiveMenu {
+            border-left: 3px solid #22A7F0 !important;
+            border-right: 0px solid #22A7F0 !important;
+            background-color: aqua !important;
+        }
+
+        .navbar-nav > panel panel-default dropdown:active {
+            border-left: 3px solid #22A7F0 !important;
+            border-right: 0px solid #22A7F0 !important;
+            background-color: white !important;
+        }
+
+        .navbar-nav > li:hover {
+            border-left: 3px solid #22A7F0 !important;
+            border-right: 0px solid #22A7F0 !important;
+            background-color: white !important;
+        }
+
+        .navbar-nav > ul > li:active {
+            border-left: 3px solid #22A7F0 !important;
+            border-right: 0px solid #22A7F0 !important;
+            background-color: #eeeeee !important;
+        }
+
+        th {
+            background-color: #5E7494 !important;
+            color: white !important;
+        }
+
+        .form-control {
+            display: inline;
+            width: 26%;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+        }
+
+        .form-long2 {
+            display: inline;
+            width: 35%;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+        }
+
+        .form-long {
+            display: inline;
+            width: 35%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+        }
+
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+
+            .btn-file input[type=file] {
+                position: absolute;
+                top: 0;
+                right: 0;
+                min-width: 100%;
+                min-height: 100%;
+                font-size: 100px;
+                text-align: right;
+                outline: none;
+                background: white;
+                cursor: inherit;
+                display: block;
+            }
+
+        .PaginationClass span {
+            font-weight: bold;
+        }
+
+        .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+            vertical-align: middle !important;
+        }
+
+        /*Calendar Control CSS*/
+        .custom-calendar .ajax__calendar_container {
+            background-color: #DEF1F4;
+            border: solid 1px #77D5F7;
+        }
+
+        .custom-calendar .ajax__calendar_header {
+            background-color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .custom-calendar .ajax__calendar_title,
+        .custom-calendar .ajax__calendar_next,
+        .custom-calendar .ajax__calendar_prev {
+            color: #004080;
+            padding-top: 3px;
+        }
+
+        .ajax__calendar_container {
+            width: 180px !important;
+            border-radius: 10px !important;
+        }
+
+        .custom-calendar .ajax__calendar_body {
+            background-color: #ffffff;
+            border: solid 1px #77D5F7;
+        }
+
+        .custom-calendar .ajax__calendar_dayname {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 4px;
+            margin-top: 2px;
+            color: #004080;
+        }
+
+        .custom-calendar .ajax__calendar_day {
+            color: #004080;
+            text-align: center;
+        }
+
+        .custom-calendar .ajax__calendar_hover .ajax__calendar_day,
+        .custom-calendar .ajax__calendar_hover .ajax__calendar_month,
+        .custom-calendar .ajax__calendar_hover .ajax__calendar_year,
+        .custom-calendar .ajax__calendar_active {
+            color: #004080;
+            font-weight: bold;
+            background-color: #DEF1F4;
+        }
+
+        .custom-calendar .ajax__calendar_today {
+            font-weight: bold;
+        }
+
+        .custom-calendar .ajax__calendar_invalid .ajax__calendar_day
+        /* Add class for your Invalid dates*/ {
+            text-decoration: strike;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .custom-calendar .ajax__calendar_other,
+        .custom-calendar .ajax__calendar_hover .ajax__calendar_today,
+        .custom-calendar .ajax__calendar_hover .ajax__calendar_title {
+            color: #bbbbbb;
+        }
+    </style>
+    <script type="text/javascript">
+
+        $(window).on('hashchange', function () { $(".cssload-container").show(); });
+        function showmodalpopup() {
+            $("#modalDefault").dialog({
+                title: "jQuery Popup from Server Side",
+                width: 430,
+                height: 250,
+                modal: true,
+                buttons: {
+                    Close: function () {
+                        $(this).dialog('close');
+                    }
+                }
+            });
+        };
+        function ShowProgress() {
+            setTimeout(function () {
+                var modal = $('<div />');
+                modal.addClass("modal");
+                $('body').append(modal);
+                var loading = $(".cssloadcontainer");
+                loading.show();
+
+            }, 50);
+            $(".cssloadcontainer").hide();
+        }
+
+        // Wait for window load
+        $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
+    <%--Head Content--%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<%--Body Content--%>
+
+<body class="flat-green" style="overflow-x: hidden">
+    <div class="se-pre-con"></div>
+    <div class="app-container">
+        <div class="row content-container">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-top" runat="server" id="nav_Header">
+                <div class="container-fluid">
+                	
+                	<%--Navigation bar with Change Password and Logout button--%>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-expand-toggle">
+                            <i class="fa fa-bars icon"></i>
+                        </button>
+                        <ol class="breadcrumb navbar-breadcrumb">
+                            <li id="title_PMIS"></li>
+                        </ol>
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-th icon" id="icon_Login"></i>
+                        </button>
+                    </div>
+                    <ul id="list_Title" class="nav navbar-nav navbar-right">
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-times icon"></i>
+                        </button>
+                        <li class="dropdown danger">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="lnk_TotalActive" runat="server" role="button" aria-expanded="false">0</a>
+                            <ul class="dropdown-menu danger  animated fadeInDown">
+                                <li class="title">
+                                    Notification <span class="badge pull-right" runat="server" id="span_TotalActive">0</span>
+                                </li>
+                                <li>
+                                    <ul class="list-group notifications">
+                                        <a href="status_1">
+                                            <li class="list-group-item">
+                                                <span class="badge info" id="span_NewTasks" runat="server">0</span> <i class="fa fa-exclamation-circle icon"></i> New Tasks
+                                            </li>
+                                        </a>
+                                        <a href="status_3">
+                                            <li class="list-group-item">
+                                                <span class="badge warning" id="span_HoldedTasks" runat="server">0</span> <i class="fa fa-pause icon"></i> Holded Tasks
+                                            </li>
+                                        </a>
+                                        <a href="status_2">
+                                            <li class="list-group-item">
+                                                <span class="badge success" id="span_WIPTasks" runat="server">0</span> <i class="fa fa-play icon"></i> Tasks On Progress
+                                            </li>
+                                        </a>
+                                       <%--<a style="cursor:pointer" id="lnk_Dpr_NonEntry">
+                                            <li class="list-group-item">
+                                                <span class="badge danger" style="background-color:red" id="span_Dpr_NonEntry" runat="server">0</span> <i class="glyphicon glyphicon-flash icon"></i> DPR Non-Entry
+                                            </li>
+                                        </a>--%>
+										<a href="status_A" style="background-color:#19B5FE !important;">
+                                            <li class="list-group-item message" style="background-color:#19B5FE">
+                                                <div style="color:white">Active Tasks<span class="badge primary" style="color:white;margin-left:2px" id="span_ActiveTasks" runat="server">0</span></div>
+                                            </li>
+                                        </a>
+										
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown profile">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <asp:Label ID="lbl_UserNameHeader" runat="server" Text="Label"></asp:Label><span class="caret"></span></a>
+                            <ul class="dropdown-menu animated fadeInDown">
+                                <li class="profile-img">
+                                    <img src="assets/img/profile/original/profile-img.png" alt="Profile Image" />
+                                </li>
+                                <li>
+                                    <div class="profile-info">
+                                        <h4 class="username">
+                                            <asp:Label ID="lblusernamedetails" runat="server" Text="Label"></asp:Label></h4>
+                                        <div class="btn-group margin-bottom-2x" role="group">
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalChangePassword"><i class="fa fa-user"></i>Change Password</button>
+                                            <button id="Button1" type="button" runat="server" onclick="Redirect()" class="btn btn-default"><i class="fa fa-sign-out"></i>Logout</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <%--Sidebar Content--%>
+            <div class="side-menu" id="Side_Menu" runat="server" clientidmode="Static">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="side-menu-container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                <div class="icon fa fa-desktop"></div>
+                                <div class="title">ELearning PMIS</div>
+                            </a>
+                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                                <i class="fa fa-times icon"></i>
+                            </button>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a id="Dashboard" href="Dashboard">
+                                    <span class="icon fa fa-tachometer"></span><span class="title" title="Dashboard" onclick="getID(this.title)">Dashboard</span>
+                                </a>
+                            </li>
+                            <li runat="server" id="Projects" class="panel panel-default dropdown">
+                                <a data-toggle="collapse" id="lk_Projects" href="#dropdown-table">
+                                    <span class="icon fa fa-table"></span><span class="title">Project</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-table" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a runat="server" title="Projects" id="lnk_Projects" onclick="getID(this.title)" href="Projects">Projects</a>
+                                            </li>
+                                            <li><a runat="server" title="Projects" id="lnk_ProjectAnalysis" onclick="getID(this.title)"  href="ProjectAnalysis">Project Analysis</a>
+                                            </li>
+                                            <li><a runat="server" title="Projects" id="lnk_Stages" onclick="getID(this.title)"  href="Stages">Stages</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li runat="server" id="Teams" class="panel panel-default dropdown">
+                                <a data-toggle="collapse" id="lk_Teams" href="#dropdown_users">
+                                    <span class="icon glyphicon glyphicon-user"></span><span class="title">Teams</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown_users" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li runat="server" id="submenu_Users"><a runat="server" title="Teams" onclick="getID(this.title)" id="lnk_Users" href="Users">Users</a>
+                                            </li>
+                                            <li runat="server" id="submenu_Teams"><a runat="server" title="Teams" onclick="getID(this.title)" id="lnk_Teams" href="Teams">Teams</a>
+                                            </li>
+                                            <li><a runat="server" id="lnk_TeamAllotment" title="Teams" onclick="getID(this.title)" href="TeamAllotment">Team Allotment</a>
+                                            </li>
+                                             <li><a href="Milestones" runat="server" title="Milestones" onclick="getID(this.title)" id="lnk_Milestones">Milestones</a>
+                                            </li>
+                                            <li><a href="Tasks" runat="server" title="Teams" onclick="getID(this.title)" id="lnk_Tasks">Tasks</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Dropdown-->
+                            <li runat="server" id="DailyActivity" class="panel panel-default dropdown">
+                                <a data-toggle="collapse" id="lk_DailyActivity" href="#component-example">
+                                    <span class="icon fa fa-cubes"></span><span class="title">Daily Activity</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="component-example" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a runat="server" title="DailyActivity" onclick="getID(this.title)" id="lnk_TimeTrackingSheet" href="TimeTrackingSheet">TimeTrackingSheet</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Dropdown-->
+                            <li runat="server" id="Reports" class="panel panel-default dropdown">
+                                <a data-toggle="collapse" id="lk_Reports" href="#dropdown-example">
+                                    <span class="icon fa fa-slack"></span><span class="title">Reports</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-example" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a title="Reports" onclick="getID(this.title)" href="ProductivityReport">Productivity Report</a>
+                                            </li>
+                                            <li><a title="Reports" onclick="getID(this.title)" href="JobCardReport">Job Card Report</a>
+                                            </li>
+                                            <li><a title="Reports" onclick="getID(this.title)" href="ProductionReport">Production Report</a>
+                                            </li>
+                                            <li><a href="Non_ProductionReport" title="Reports" onclick="getID(this.title)">Non-Production Report</a>
+                                            </li>
+                                            <li><a href="DPR_NonEntry" title="Reports" onclick="getID(this.title)">DPR Non-Entry</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li runat="server" id="MRM_Reports" class="panel panel-default dropdown">
+                                <a data-toggle="collapse" id="lk_MRM_Reports" href="#calendar-o">
+                                    <span class="icon fa fa-archive"></span><span class="title">MRM Reports</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="calendar-o" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a title="MRM_Reports" onclick="getID(this.title)" href="MRM_Report">MRM_Report</a>
+                                            </li>
+                                            <li><a href="MIS_Report" title="Reports" onclick="getID(this.title)">MIS Report</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li runat="server" id="CodingStandardRating">
+                                <a href="CodingStandardRating">
+                                    <span class="icon glyphicon glyphicon-align-center"></span><span class="title">Coding Standard / Quality Rating</span>
+                                </a>
+                            </li>
+                            <li runat="server" id="DCSReport">
+                                <a href="DCS">
+                                    <span class="icon glyphicon glyphicon-globe"></span><span class="title">DCS</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Login">
+                                    <span class="icon fa fa-tachometer"></span><span class="title">Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </div>
+            <div class="container-fluid">
+                <div class="side-body padding-top">
+                    <div class="row">
+                        <form id="form1" runat="server">
+                            <%--Modal for Change Password--%>
+                            <div class="modal fade" id="modalChangePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="lbl_Title">Change Password</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label class="label-title">
+                                                    Current Password</label>
+                                                <asp:TextBox ID="txt_CurrentPassword" TextMode="Password" class="form-control" Width="35%"
+                                                    runat="server" ValidationGroup="password"></asp:TextBox><span style="color: #ff0000">
+                                                    **</span>
+                                                <asp:RequiredFieldValidator ID="rf_CurrentPassword" runat="server" ErrorMessage="Current Password is Mandatory"
+                                                    Display="Dynamic" ValidationGroup="password" ControlToValidate="txt_CurrentPassword"></asp:RequiredFieldValidator>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-title">
+                                                    New Password</label>
+                                                <asp:TextBox ID="txt_NewPassword" TextMode="Password" class="form-control" Width="35%"
+                                                    runat="server" ValidationGroup="password"></asp:TextBox><span style="color: #ff0000">
+                                                    **</span>
+                                                <asp:RequiredFieldValidator ID="rf_NewPassword" runat="server" ErrorMessage="New Password is Mandatory"
+                                                    Display="Dynamic" ValidationGroup="password" ControlToValidate="txt_NewPassword"></asp:RequiredFieldValidator>
+                                                <asp:RegularExpressionValidator ID="re_CurrentPassword" runat="server" ErrorMessage="Password must be atleast one each of on special character,number,special character and length of 7 to 20"
+                                                    ValidationGroup="password" ControlToValidate="txt_NewPassword" ValidationExpression="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-title">
+                                                    Confirm New Password</label>
+                                                <asp:TextBox ID="txt_ConfirmPassword" TextMode="Password" class="form-control" Width="35%"
+                                                    runat="server" ValidationGroup="password"></asp:TextBox><span style="color: #ff0000">
+                                                    **</span>
+                                                <asp:RequiredFieldValidator ID="rf_ConfirmPassword" runat="server" ErrorMessage="Confirm Password is Mandatory"
+                                                    Display="Dynamic" ValidationGroup="password" ControlToValidate="txt_ConfirmPassword"></asp:RequiredFieldValidator>
+                                                <asp:CompareValidator ID="cmp_ConfirmNewPassword" runat="server" ErrorMessage="Confirm Password must be same as New Password"
+                                                    Display="Dynamic" ValidationGroup="password" ControlToCompare="txt_NewPassword"
+                                                    ControlToValidate="txt_ConfirmPassword"></asp:CompareValidator>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <asp:Button ID="btn_ChangePassword" class="btn btn-primary" ValidationGroup="password"
+                                                runat="server" OnClick="btn_ChangePassword_Click" Text="Change Password" />
+                                            <asp:Button ID="btn_Cancel" class="btn btn-primary" runat="server" OnClick="btn_Cancel_Click"
+                                                data-dismiss="modal" Text="Cancel" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                                        </asp:ScriptManager>
+                                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                        </asp:ContentPlaceHolder>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%--Footer Content--%>
+    <div id="footer">
+        <div class="container">
+        </div>
+    </div>
+    <%--JS Libs--%>
+    <script type="text/javascript" src="assets/bower_components/iCheck/icheck.min.js"></script>
+    <script type="text/javascript" src="assets/bower_components/jquery/dist/jquery.ganttView.js"></script>
+    <script type="text/javascript" src="assets/js/index.js"></script>
+    <!-- Javascript -->
+    <%--<script type="text/javascript" src="assets/js/datetimepicker/jquery.simple-dtpicker.js"></script>--%>
+    <%--<script type="text/javascript" src="assets/bower_components/bootstrap/dist/js/bootstrap-multiselect.js"></script>--%>
+    <script type="text/javascript">
+        $(".navbar-expand-toggle").click(function () {
+            var div1Class = $('.navbar-expand-toggle').attr('class');
+            if (div1Class == "navbar-expand-toggle") {
+                if ($(window).width() >= 250 && $("#icon_Login").is(":visible") != false) {
+                    $("#Side_Menu").show();
+                }
+            }
+            else {
+                if ($(window).width() <= 250) {
+                    $("#Side_Menu").hide();
+                }
+
+            }
+        });
+        function ConfirmDelete(data) {
+            var confirm_value = document.createElement("INPUT");
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
+            if (confirm("Are you sure want to delete" + data)) {
+                confirm_value.value = "Yes";
+            } else {
+                confirm_value.value = "No";
+            }
+            document.forms[0].appendChild(confirm_value);
+        }
+        function ConfirmHold(data) {
+            var confirm_value = document.createElement("INPUT");
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
+            if (confirm("Are you sure want to hold" + data)) {
+                confirm_value.value = "Yes";
+            } else {
+                confirm_value.value = "No";
+            }
+            document.forms[0].appendChild(confirm_value);
+        }
+    </script>
+    <script type="text/javascript">
+        function no_alpha() {
+            var len_vol = eval(document.form1.volume.value.length);
+            var len_qr = eval(document.form1.qr.value.length);
+            if (len_vol == 7) {
+                return false;
+            }
+            if (event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 46) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function alphanumeric() {
+            if (event.keyCode >= 97 && event.keyCode <= 122 || event.keyCode >= 65 && event.keyCode <= 90 || event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 32 || event.keyCode == 45 || event.keyCode == 46 || event.keyCode == 44 || event.keyCode == 46 || event.keyCode == 16 || event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 46) {
+
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function alpha() {
+
+            if (event.keyCode >= 97 && event.keyCode <= 122 || event.keyCode >= 65 && event.keyCode <= 90 || event.keyCode == 32 || event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 46) {
+
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+    </script>
+    <script type="text/javascript">
+        function getID(title) {
+
+        }
+    </script>
+    <script type="text/javascript">
+        function Redirect() {
+            window.location = "Login";
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#MainContentBody').css({ 'width': $(document).width(), 'height': $(document).height() })
+            $("button").click(function () {
+                $("#title").css("color", "red");
+            });
+        });
+    </script>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            $("#MainContentBody").fadeIn(50000);
+        }
+
+    </script>
+    <script type="text/javascript">
+        $(window).resize(function () {
+            var div1Class = $('.navbar-expand-toggle').attr('class');
+
+            if ($("#icon_Login").is(":visible") == false) {
+                $("#Side_Menu").show();
+            }
+            else if ($("#icon_Login").is(":visible") != false && div1Class == "navbar-expand-toggle") {
+                $("#Side_Menu").hide();
+            }
+            if ($(window).width() >= 850) {
+                $('#title_PMIS').html("Project Management Information System");
+            }
+            else {
+                $('#title_PMIS').html("PMIS");
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            ShowProgress();
+            $('body').removeClass('fade-out');
+            $('#title_PMIS').html("Project Management Information System");
+            if ($(window).width() >= 850) {
+                $('#title_PMIS').html("Project Management Information System");
+            }
+            else {
+                $('#title_PMIS').html("PMIS");
+            }
+
+            if ($("#icon_Login").is(":visible") == false) {
+                $("#Side_Menu").show();
+            }
+            else {
+                $("#Side_Menu").hide();
+            }
+        };
+
+
+    </script>
+    <script type="text/javascript">
+        $("#lnk_Dpr_NonEntry").click(function () {
+            var userid = '<%=Convert.ToString(Session["UserId"])%>';
+            window.location = "DPR_NonEntry?EmpID=" + userid;
+        });
+    </script>
+    <%--Highchart Reference--%>
+    <script type="text/javascript" src="assets/js/charts/highcharts.js"></script>
+    <script type="text/javascript" src="assets/js/charts/highcharts-3d.js"></script>
+    <script type="text/javascript" src="assets/js/charts/exporting.js"></script>
+    <style>
+        #MainContentBody {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            background: rgba(0,0,0,0.5);
+            z-index: 100;
+        }
+    </style>
+</body>
+</html>
